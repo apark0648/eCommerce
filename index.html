@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Alex's Special Corner Shop</title>
+        <style>
+            img{
+                width:150px
+            }
+            input{
+                width:30px
+            }
+        </style>
+        <script>
+            function changeBackground(color) {
+                document.body.style.background = color;
+            }
+            function purchase(){
+                var quantity1 = document.getElementById("quantity1");
+                var quantity2 = document.getElementById("quantity2");
+                var quantity3 = document.getElementById("quantity3");
+                var output = document.getElementById("output");
+                var rprice1 = 60;
+                var rprice2 = 1300;
+                var rprice3 = 20;
+                var shipping1 = 25;
+                var shipping2 = 10;
+                var shipping3 = 0;
+                var shipping = 0;
+                var discount = 0.7;
+                var wholebag = 5;
+                var wholemacpro = 100;
+                var wholeclock = 1;
+                var subtotal = (rprice1 * parseInt(quantity1.value)) + (rprice2 * parseInt(quantity2.value)) + (rprice3 * parseInt(quantity3.value));
+                var discountedsubtotal = (subtotal * discount);
+                var taxrate = 0.0875;
+                var tax = subtotal * taxrate;
+                var profit = (subtotal - (wholebag + wholemacpro + wholeclock));
+                    console.log("Profit Made: $" + profit);
+                var build = "";
+                    build += "Subtotal: $" + subtotal + "<br>";
+                    build += "Tax: $" + tax + "<br>";
+                    if(subtotal < 100){
+                        build += "Shipping: $" + shipping1 + "<br>";
+                        shipping = shipping1;
+                    }else if(subtotal >= 100 && subtotal <= 200){
+                        build += "Shipping: $" + shipping2 + "<br>";
+                        shipping = shipping2
+                    }else if(subtotal > 200){
+                        build += "Shipping: $" + shipping3 + "<br>";
+                        shipping = shipping3
+                    }
+                    build += "------------------<br>";
+                    if(subtotal > 2000) {
+                        build += "Discounted by 30%" + "<br>";
+                        build += "Discounted Price: $" + discountedsubtotal + "<br>";
+                    }else{
+                        var total = subtotal + tax + shipping;
+                        build += "Total: $" + total;
+                    }
+                output.innerHTML = build;
+            }
+        </script>
+    <head>
+    <body>
+        <h1 style="text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" ><u> DAILY DEALS WITH MR.PARK! </u></h1>
+        <h2 style="text-align:center;"> IF YOU SPEND OVER $2000, YOU WILL GET A DISCOUNT OF 30% ON YOUR TOTAL!!!!!!!!!!!!!!!</h2>
+        <div>
+            <h2> Herschel Bag </h2>
+            <img src = "hbagfolder\hbag.jpg"><br>
+            <span>$60.00</span>
+            <p>
+                CARRY THIS BAG WITH YOU AND YOU'LL BE A COOL PERSON WEARING A COOL BAG!!
+            </P>
+            <input id = "quantity1" type = "text" placeholder = "Enter quantity here">
+        </div>
+        <div>
+            <h2> MacBook Pro </h2>
+            <img src = "images\macbookpro.jpg"><br>
+            <span>$1300.00</span>
+            <p>
+                DONT HAVE A LAPTOP YET? GET THIS MACBOOK PRO AND DO ANYTHING YOU WANT WITH IT!! THE MACBOOK PRO FUNCTIONS LIKE A REGULAR LAPTOP BUT WITH MORE NEW FEATURES!! 
+            </p>
+            <input id = "quantity2" type = "text" placeholder = "Enter quantity here">
+        </div>
+        <div>
+            <h2> Digital Clock </h2>
+            <img src = "images\digitalclock.jpg"><br>
+            <span>$20.00</span>
+            <p>
+                IS YOUR CLOCK NOT WORKING OR YOU JUST DONT HAVE ONE?? GET THIS DIGITAL CLOCK AND YOU'LL ALWAYS KNOW WHAT TIME IT IS WITHOUT LOOKING AT THE HOUR HAND AND MINUTE HAND!!
+            </p>
+            <input id = "quantity3" type = "text" placeholder = "Enter quantity here">
+        </div>
+        <div id = "output">
+        </div>
+        <button onclick = "purchase()">
+            PURCHASE
+        </button>
+        <BODY onload="changeBackground('hotpink');">
+        
+    </body>
+<html>
